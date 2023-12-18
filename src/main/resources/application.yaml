@@ -36,7 +36,7 @@ spring:
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/auth-service/login
+            - Path=/auth-service/api/login
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
@@ -44,7 +44,7 @@ spring:
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/auth-service/join
+            - Path=/auth-service/api/join
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
@@ -52,7 +52,7 @@ spring:
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/auth-service/reissue
+            - Path=/auth-service/api/reissue
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
