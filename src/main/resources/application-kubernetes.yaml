@@ -22,19 +22,13 @@ spring:
     name: gateway-service
   config:
     activate:
-      on-profile: default
+      on-profile: kubernetes
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
-          lowerCaseServiceId: true
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage: Spring Cloud Gateway Global Filter
-            preLogger: true
-            postLogger: true
+          lower-case-service-id: true
       routes:
         - id: auth-service
           uri: lb://AUTH-SERVICE
@@ -114,13 +108,8 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/post-service/(?<segment>.*), /$\{segment}
-
-
 eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
