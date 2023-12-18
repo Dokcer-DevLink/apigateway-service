@@ -38,6 +38,9 @@ dependencies {
 	// Eureka Server에 Client로 등록하기 위한 라이브러리
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

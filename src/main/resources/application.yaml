@@ -26,6 +26,12 @@ spring:
         locator:
           enabled: true
           lowerCaseServiceId: true
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
 
 eureka:
   instance:
