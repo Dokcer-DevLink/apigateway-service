@@ -11,5 +11,6 @@ spring:
         enabled: true
         name: gateway-config
         namespace: default
+        paths: /app/config/application.yaml
       loadbalancer:
         mode: service
