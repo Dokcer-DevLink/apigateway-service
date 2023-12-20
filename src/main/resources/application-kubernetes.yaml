@@ -156,7 +156,6 @@ spring:
           uri: lb://CHAT-SERVICE
           predicates:
             - Path=/chat-service/ws-stomp
-            - Method=*
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment}
@@ -164,7 +163,6 @@ spring:
           uri: lb://CHAT-SERVICE
           predicates:
             - Path=/chat-service/sub/**
-            - Method=*
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment}
@@ -172,7 +170,6 @@ spring:
           uri: lb://CHAT-SERVICE
           predicates:
             - Path=/chat-service/pub/**
-            - Method=*
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment}
