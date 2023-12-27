@@ -32,10 +32,15 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: '*'
+            allowedOriginPatterns: "*" # 수정
             allow-credentials: true
-            allowedHeaders: '*'
-            allowedMethods: '*'
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
       routes:
         - id: auth-service
           uri: lb://AUTH-SERVICE
