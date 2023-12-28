@@ -191,6 +191,104 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/profile-service/(?<segment>.*), /$\{segment}
 
+        - id: notification-service
+          uri: lb://NOTIFY-SERVICE
+          predicates:
+            - Path=/notification-service/api/notification/my
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/notification-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: notification-service
+          uri: lb://NOTIFY-SERVICE
+          predicates:
+            - Path=/notification-service/api/notification/check
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/notification-service/(?<segment>.*), /$\{segment}
+
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/apply
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/send
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/receive
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/accept
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/reject
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/status
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/my
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: mentoring-service
+          uri: lb://MENTORING-SERVICE
+          predicates:
+            - Path=/mentoring-service/api/mentoring/record
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/mentoring-service/(?<segment>.*), /$\{segment}
+
+
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
