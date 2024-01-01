@@ -72,6 +72,22 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
+            - Path=/auth-service/api/login/github
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth-service/api/auth/github/callback
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
             - Path=/auth-service/**
             - Method=GET,POST,DELETE,PUT,OPTIONS
           filters:
