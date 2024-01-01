@@ -402,6 +402,16 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/matching-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
+        - id: matching-service
+          uri: lb://matching-service
+          predicates:
+            - Path=/matching-service/api/matching/search
+            - Method=POST,OPTIONS
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/matching-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+
 eureka:
   client:
     enabled: false
