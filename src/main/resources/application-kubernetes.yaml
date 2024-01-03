@@ -413,7 +413,7 @@ spring:
           uri: lb://matching-service
           predicates:
             - Path=/matching-service/api/matching
-            - Method=POST,OPTIONS
+            - Method=GET,OPTIONS
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/matching-service/(?<segment>.*), /$\{segment}
