@@ -80,7 +80,7 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth-service/api/auth/github/callback
+            - Path=/auth-service/auth/github/callback
             - Method=GET
           filters:
             - RemoveRequestHeader=Cookie
